@@ -12,6 +12,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private GameObject creditScreen;
+    [SerializeField] private GameObject makeRoomPanel;
     [SerializeField] private TMP_Text loadingText;
 
     [SerializeField] private GameObject menuButtons;
@@ -112,6 +113,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         roomBrowserScreen.SetActive(false);
         nameInputScreen.SetActive(false);
         creditScreen.SetActive(false);
+        makeRoomPanel.SetActive(false);
     }
 
     public void OpenRoomCreate()
@@ -124,6 +126,12 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         CloseMenus();
         creditScreen.SetActive(true);
+    }
+
+    public void showRoomPanel()
+    {
+        CloseMenus();
+        makeRoomPanel.SetActive(true);
     }
 
     public void CreateRoom()
@@ -269,10 +277,6 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     }
 
-    public void Credits()
-    {
-
-    }
 
     public void SetNickname()
     {

@@ -145,7 +145,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             _mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity;
 
-            //ліво право
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 
                 transform.rotation.eulerAngles.y + _mouseInput.x ,transform.rotation.eulerAngles.z);
 
@@ -164,8 +163,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
 
             _moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-
-
 
 
 
