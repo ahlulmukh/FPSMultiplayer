@@ -63,9 +63,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     private int _currentHealth;
 
+    public Animation _animation;
+    public AnimationClip draw;
+
     public Transform adsOutPoint, adsInPoint;
 
     public AudioSource slow, fast;
+
+
     void Start()
     {
 
@@ -100,11 +105,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         int skinIndex = (photonView.Owner.ActorNumber - 2 + allSkins.Length) % allSkins.Length;
         playerModel.GetComponent<Renderer>().material = allSkins[skinIndex];
 
-
-
-        // Transform newTrans = SpawnManager.instance.GetSpawnPoint();
-        // transform.position = newTrans.position;
-        // transform.rotation = newTrans.rotation;
     }
 
 
@@ -151,7 +151,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _verticalRotStore += _mouseInput.y;
             _verticalRotStore = Mathf.Clamp(_verticalRotStore, -60f, 60f);
 
-            //верх вниз
             if(invertLook){
                 viewPoint.rotation = Quaternion.Euler(_verticalRotStore, 
                     viewPoint.rotation.eulerAngles.y, viewPoint.rotation.eulerAngles.z);
@@ -448,6 +447,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void SwitchGun()
     {
+
+        _animation.Stop();
+        _animation.Play(draw.name);
+
         foreach (Gun gun in allGuns)
         {
             gun.gameObject.SetActive(false);
