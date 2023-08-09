@@ -71,6 +71,27 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public AudioSource slow, fast;
 
 
+    [Header("Recoil Settings")]
+    //[Range(0, 1)]
+    //public float recoilPercent = 0.3f;
+    [Range(0, 2)]
+    public float recoverPercent = 0.7f;
+    [Space]
+    public float recoilUp = 1f;
+    public float recoilBack = 0;
+
+
+    private Vector3 originalPosition;
+    private Vector3 recoilVelocity = Vector3.zero;
+
+    private float recoilLength;
+    private float recoverLenth;
+
+    private bool recoiling;
+    public bool recovering;
+
+
+
     void Start()
     {
 
@@ -104,6 +125,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         int skinIndex = (photonView.Owner.ActorNumber - 2 + allSkins.Length) % allSkins.Length;
         playerModel.GetComponent<Renderer>().material = allSkins[skinIndex];
+
+        originalPosition = allGuns[_selectedGun].transform.localPosition;
+
+        recoilLength = 0;
+        recoverLenth = 1 / coolRate * recoverPercent;
 
     }
 
@@ -230,17 +256,27 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 if(Input.GetMouseButtonDown(0))
                 {
                     Shoot();
-
+                    recoiling = true;
                 }
 
                 if(Input.GetMouseButton(0) && allGuns[_selectedGun].isAutomatic)
                 {
                     _shotCounter -= Time.deltaTime;
-
-                    if(_shotCounter <= 0)
+                    if (_shotCounter <= 0)
                     {
                         Shoot();
+                        recoiling = true;
                     }
+                }
+
+                if (recoiling)
+                {
+                    Recoil();
+                }
+
+                if (recovering)
+                {
+                    Recovering();
                 }
 
                 _heatCouner -= coolRate * Time.deltaTime;
@@ -328,6 +364,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     Cursor.lockState = CursorLockMode.Locked;
                 }
             }
+
         }
     }
 
@@ -366,12 +403,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
     private void Shoot()
     {
+
+        Recoil();
+
         if (_selectedGun != 2) // Pemeriksaan jika senjata yang dipilih bukan pisau
         {
             allGuns[_selectedGun].muzzleFlash.SetActive(true);
             _muzzleCounter = muzzleDisplayTime;
         }
-
         Ray ray = _cam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
         ray.origin = _cam.transform.position;
 
@@ -417,6 +456,31 @@ public class PlayerController : MonoBehaviourPunCallbacks
         allGuns[_selectedGun].shotSound.Play();
     }
 
+    void Recoil()
+    {
+        Vector3 finalPosition = new Vector3(originalPosition.x, originalPosition.y, originalPosition.z - recoilBack);
+
+        allGuns[_selectedGun].transform.localPosition = Vector3.SmoothDamp(allGuns[_selectedGun].transform.localPosition, finalPosition, ref recoilVelocity, recoilLength);
+
+        if (allGuns[_selectedGun].transform.localPosition == finalPosition)
+        {
+            recoiling = false;
+            recovering = true;
+        }
+    }
+
+    void Recovering()
+    {
+        Vector3 finalPosition = originalPosition;
+
+        allGuns[_selectedGun].transform.localPosition = Vector3.SmoothDamp(allGuns[_selectedGun].transform.localPosition, finalPosition, ref recoilVelocity, recoverLenth);
+
+        if (allGuns[_selectedGun].transform.localPosition == finalPosition)
+        {
+            recoiling = false;
+            recovering = false;
+        }
+    }
 
 
 
