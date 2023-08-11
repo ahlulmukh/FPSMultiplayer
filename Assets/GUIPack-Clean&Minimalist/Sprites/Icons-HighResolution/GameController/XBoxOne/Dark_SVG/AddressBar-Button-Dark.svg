@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 243 243" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-171,-153)">
+        <g transform="matrix(5.27077,0,0,5.27077,-893.013,-1261.17)">
+            <g id="AddressBar-Button-Dark" transform="matrix(1,0,0,1,-1361.43,-44.218)">
+                <g transform="matrix(1.95066,0,0,1.95066,31.419,-215.246)">
+                    <circle cx="797.154" cy="282.365" r="11.753" style="fill:rgb(59,59,59);"/>
+                </g>
+                <path d="M1583.94,331.164L1600.18,331.164L1600.18,345.378L1599.26,345.378L1599.26,345.386L1583.94,345.386L1583.94,331.164ZM1596.93,334.407L1587.18,334.407L1587.18,342.143L1596.93,342.143L1596.93,334.407ZM1573,324.017L1588.46,324.017L1588.46,328.802L1585.22,328.802L1585.22,327.26L1576.24,327.26L1576.24,335.214L1580.83,335.214L1580.83,338.456L1573,338.456L1573,335.214L1573,327.26L1573,324.017Z" style="fill:white;"/>
+            </g>
+        </g>
+    </g>
+</svg>

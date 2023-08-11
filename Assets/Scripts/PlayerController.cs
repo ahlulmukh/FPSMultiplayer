@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
@@ -19,7 +20,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     [SerializeField] private float jumpForce = 11f;
     [SerializeField] private float gravityMod = 7f;
 //    [SerializeField] private float timeBetweenShots = .1f;
-    [SerializeField] private float maxHeat = 10f;
 //    [SerializeField] private float heatPerShot = 1f;
     [SerializeField] private float coolRate = 4f;
     [SerializeField] private float overheatCoolRate = 5f;
@@ -35,13 +35,16 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private Animator knifeAnimator;
     private float _muzzleCounter;
 
+
+
     private int _selectedGun;
     private float _shotCounter;
+    private float fireCounter;
     private float _verticalRotStore;
     private float _activeMoveSpeed;
     private float _heatCouner;
     private bool _isGrounded;
-    private bool _overHeated;
+
 
     
     private Vector2 _mouseInput;
@@ -53,21 +56,21 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     [SerializeField] private Animator anim;
     [SerializeField] private GameObject playerModel;
+    [SerializeField] private GameObject armsHandgun;
+    [SerializeField] private GameObject armsRifle;
     [SerializeField] private Transform modelGunPoint;
     [SerializeField] private Transform gunHolder;
 
 
     public Material[] allSkins;
-
     public float adsSpeed = 5f;
-
     private int _currentHealth;
-
     public Animation _animation;
     public AnimationClip draw;
-
     public Transform adsOutPoint, adsInPoint;
 
+
+    [Header("Sound Step Settings")]
     public AudioSource slow, fast;
 
 
@@ -90,6 +93,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private bool recoiling;
     public bool recovering;
 
+    [Header("Weapon Settings")]
+    private bool isReloading;
+    private TextMeshProUGUI ammoText;
+    private Coroutine reloadCo;
+    private Coroutine reloadAnimationCo;
+
 
 
     void Start()
@@ -99,25 +108,29 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             knifeAnimator = knifeObject.GetComponent<Animator>();
         }
+
         Cursor.lockState = CursorLockMode.Locked;
-        UIController.instance.weaponTempSlider.maxValue = maxHeat;
         _cam = Camera.main;
-
         //SwitchGun();
-
         photonView.RPC("SetGun", RpcTarget.All, _selectedGun);
-
         _currentHealth = maxHealth;
 
 
         if(photonView.IsMine)
         {
             playerModel.SetActive(false);
+            ammoText = UIController.instance.ammoText;
+            _shotCounter = 0f;
+            allGuns[_selectedGun].currentAmmo = allGuns[_selectedGun].ammo;
 
             UIController.instance.healthSlider.maxValue = maxHealth;
             UIController.instance.healthSlider.value = _currentHealth;
+
+            UpdateUI();
         }
         else{
+            armsHandgun.SetActive(false);
+            armsRifle.SetActive(false);
             gunHolder.parent = modelGunPoint;
             gunHolder.localPosition = Vector3.zero;
             gunHolder.localRotation = Quaternion.identity;
@@ -125,11 +138,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         int skinIndex = (photonView.Owner.ActorNumber - 2 + allSkins.Length) % allSkins.Length;
         playerModel.GetComponent<Renderer>().material = allSkins[skinIndex];
-
         originalPosition = allGuns[_selectedGun].transform.localPosition;
-
         recoilLength = 0;
-        recoverLenth = 1 / coolRate * recoverPercent;
+        recoverLenth = 1 / _shotCounter * recoverPercent;
 
     }
 
@@ -251,66 +262,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 }
             }
 
-            if(!_overHeated)
-            {
-                if(Input.GetMouseButtonDown(0))
-                {
-                    Shoot();
-                    recoiling = true;
-                }
-
-                if(Input.GetMouseButton(0) && allGuns[_selectedGun].isAutomatic)
-                {
-                    _shotCounter -= Time.deltaTime;
-                    if (_shotCounter <= 0)
-                    {
-                        Shoot();
-                        recoiling = true;
-                    }
-                }
-
-                if (recoiling)
-                {
-                    Recoil();
-                }
-
-                if (recovering)
-                {
-                    Recovering();
-                }
-
-                _heatCouner -= coolRate * Time.deltaTime;
-            }
-            else
-            {
-                _heatCouner -= overheatCoolRate * Time.deltaTime;
-
-                if(_heatCouner <= 0)
-                {
-                    _overHeated = false;
-
-                    UIController.instance.overheatedMessage.gameObject.SetActive(false);
-                }
-            }
-
-            if(_heatCouner < 0)
-            {
-                _heatCouner = 0f;
-            }
-
-
-            UIController.instance.weaponTempSlider.value = _heatCouner;
-
-
-            if(Input.GetAxisRaw("Mouse ScrollWheel") > 0)
+            CheckForShot();
+            CheckForReload();
+            CountdownTimeBetweenShots();
+            if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
             {
                 _selectedGun++;
                 if(_selectedGun >= allGuns.Count)
                 {
                     _selectedGun = 0;
                 }
+
                 //SwitchGun();
                 photonView.RPC("SetGun", RpcTarget.All, _selectedGun);
+                UpdateUI();
 
             } 
             else if(Input.GetAxisRaw("Mouse ScrollWheel") < 0)
@@ -322,6 +287,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 }
                 //SwitchGun();
                 photonView.RPC("SetGun", RpcTarget.All, _selectedGun);
+                UpdateUI();
             }
 
             for(var i = 0; i < allGuns.Count; i++)
@@ -331,6 +297,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     _selectedGun = i;
                     //SwitchGun();
                     photonView.RPC("SetGun", RpcTarget.All, _selectedGun);
+                    UpdateUI();
                 }
             }
 
@@ -368,6 +335,37 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
     }
 
+    private void CheckForShot()
+    {
+        if (isReloading) { return; }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+            recoiling = true;
+        }
+        if (Input.GetMouseButton(0) && allGuns[_selectedGun].isAutomatic)
+        {
+            _shotCounter -= Time.deltaTime;
+            if (_shotCounter <= 0)
+            {
+                Shoot();
+                recoiling = true;
+            }
+        }
+
+        if (recoiling)
+        {
+            Recoil();
+        }
+
+        if (recovering)
+        {
+            Recovering();
+        }
+    }
+
+
     public void KnifeAttack()
     {
         if (_selectedGun == 2) // Pemeriksaan jika senjata yang dipilih adalah pisau
@@ -404,13 +402,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private void Shoot()
     {
 
-        Recoil();
 
         if (_selectedGun != 2) // Pemeriksaan jika senjata yang dipilih bukan pisau
         {
             allGuns[_selectedGun].muzzleFlash.SetActive(true);
             _muzzleCounter = muzzleDisplayTime;
         }
+
+        if (_shotCounter > 0) { return; }
+        if (isReloading) { return; }
+
+        _shotCounter = allGuns[_selectedGun].timeBetweenShots;
+
+        if (allGuns[_selectedGun].currentAmmo <= 0) { ReloadWeapon(); return; }
+
         Ray ray = _cam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
         ray.origin = _cam.transform.position;
 
@@ -432,18 +437,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
 
 
-        if(_selectedGun != 2)
-        {
-            _shotCounter = allGuns[_selectedGun].timeBetweenShots;
-            _heatCouner += allGuns[_selectedGun].heatPerShot;
-        }
-
-        if (_heatCouner >= maxHeat)
-        {
-            _heatCouner = maxHeat;
-            _overHeated = true;
-            UIController.instance.overheatedMessage.gameObject.SetActive(true);
-        }
+      //  if(_selectedGun != 2)
+        //{
+          //  _shotCounter = allGuns[_selectedGun].timeBetweenShots;
+          //  _heatCouner += allGuns[_selectedGun].heatPerShot;
+      //  }
 
         if (_selectedGun != 2) // Pemeriksaan jika senjata yang dipilih bukan pisau
         {
@@ -452,8 +450,68 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         _muzzleCounter = muzzleDisplayTime;
 
+        _shotCounter = allGuns[_selectedGun].timeBetweenShots;
+
+        allGuns[_selectedGun].ReduceCurrentAmmo();
         allGuns[_selectedGun].shotSound.Stop();
         allGuns[_selectedGun].shotSound.Play();
+        UpdateUI();
+    }
+
+    private void CountdownTimeBetweenShots()
+    {
+        if (_shotCounter > 0)
+        {
+            _shotCounter -= Time.deltaTime;
+        }
+    }
+
+    private void CheckForReload()
+    {
+        if (isReloading) { return; }
+        if (allGuns[_selectedGun].currentAmmo == allGuns[_selectedGun].ammo) { return; }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadWeapon();
+        }
+    }
+
+
+    private void ReloadWeapon()
+    {
+        isReloading = true;
+        if (reloadCo != null) { StopCoroutine(reloadCo); }
+        reloadCo = StartCoroutine(ReloadWeaponOverTime());
+    }
+
+    IEnumerator ReloadWeaponOverTime()
+    {
+        if (reloadAnimationCo != null) { StopCoroutine(reloadAnimationCo); }
+        //Less bullets to reload less time it takes
+        float totalReloadTime = (allGuns[_selectedGun].reloadDuration / allGuns[_selectedGun].ammo) * (allGuns[_selectedGun].ammo - allGuns[_selectedGun].currentAmmo);
+        reloadAnimationCo = StartCoroutine(ReloadAmmoUIAnimation(totalReloadTime));
+        yield return new WaitForSeconds(totalReloadTime);
+        allGuns[_selectedGun].ResetCurrentAmmo();
+        UpdateUI();
+        isReloading = false;
+    }
+
+
+    IEnumerator ReloadAmmoUIAnimation(float duration)
+    {
+        ammoText.color = Color.red;
+        int startAmmo = allGuns[_selectedGun].currentAmmo;
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            ammoText.text = ((int)Mathf.Lerp(startAmmo, allGuns[_selectedGun].ammo, t / duration)).ToString() + " / " + allGuns[_selectedGun].ammo.ToString();
+            yield return null;
+        }
+    }
+
+    private void UpdateUI()
+    {
+        ammoText.color = Color.white;
+        ammoText.text = allGuns[_selectedGun].currentAmmo.ToString() + " / " + allGuns[_selectedGun].ammo.ToString();
     }
 
     void Recoil()
@@ -468,6 +526,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             recovering = true;
         }
     }
+
 
     void Recovering()
     {
@@ -522,13 +581,15 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         allGuns[_selectedGun].gameObject.SetActive(true);
         allGuns[_selectedGun].muzzleFlash.SetActive(false);
+
+
     }
 
 
     [PunRPC]
     public void SetGun(int gunToSwitchTo)
     {
-        if(gunToSwitchTo < allGuns.Count)
+        if (gunToSwitchTo < allGuns.Count)
         {
             _selectedGun = gunToSwitchTo;
             SwitchGun();

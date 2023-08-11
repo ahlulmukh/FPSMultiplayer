@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 558 558" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-25,-25)">
+        <g id="X-Fail-Icon" transform="matrix(3.77306,0,0,3.77306,-16349,-1450.98)">
+            <path d="M4407.35,465.189L4341.15,398.996C4339.4,397.239 4339.4,394.388 4341.15,392.632C4342.91,390.875 4345.76,390.875 4347.52,392.632L4413.71,458.825L4479.9,392.632C4481.66,390.875 4484.51,390.875 4486.27,392.632C4488.02,394.388 4488.02,397.239 4486.27,398.996L4420.07,465.189L4486.27,531.383C4488.02,533.139 4488.02,535.991 4486.27,537.747C4484.51,539.503 4481.66,539.503 4479.9,537.747L4413.71,471.553L4347.52,537.747C4345.76,539.503 4342.91,539.503 4341.15,537.747C4339.4,535.991 4339.4,533.139 4341.15,531.383L4407.35,465.189Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

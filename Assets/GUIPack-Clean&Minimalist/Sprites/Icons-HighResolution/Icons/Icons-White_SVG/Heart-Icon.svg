@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 478 432" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-61,-84)">
+        <g id="Heart-Icon" transform="matrix(7.21082,0,0,6.88785,-7319.71,-1142.76)">
+            <path d="M1056.7,189.171C1063.68,175.915 1077.63,175.915 1084.61,182.543C1091.59,189.171 1091.59,202.427 1084.61,215.684C1079.73,225.626 1064.84,238.068 1056.7,240.739C1048.64,238.264 1033.68,225.626 1028.8,215.684C1021.82,202.427 1021.82,189.171 1028.8,182.543C1035.77,175.915 1049.73,175.915 1056.7,189.171Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

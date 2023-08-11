@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 500 565" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-44,-18)">
+        <g id="Weapon-Axe-Icon_2" transform="matrix(3.11219,0,0,3.11219,-829.707,-2041.3)">
+            <path d="M367.323,712.152L356.247,703.241L375.439,661.966L394.631,703.241L383.554,712.042L383.554,727.309L391.859,727.309L401.703,713.246L441.136,734.316L401.703,755.386L391.98,741.324L383.554,741.324L383.554,839.104C383.554,841.344 381.736,843.162 379.497,843.162L371.381,843.162C369.142,843.162 367.323,841.344 367.323,839.104L367.323,741.324L360.07,741.324L313.206,804.234C313.206,804.234 281.957,786.315 280.813,733.167C279.867,689.228 312.24,664.398 312.24,664.398L360.712,727.309L367.323,727.309L367.323,712.152Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

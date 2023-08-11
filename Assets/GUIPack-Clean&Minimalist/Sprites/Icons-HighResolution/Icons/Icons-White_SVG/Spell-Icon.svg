@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 471 552" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-64,-24)">
+        <g id="Spell-Icon" transform="matrix(5.777,0,0,5.777,-7443.67,-4168.14)">
+            <path d="M1327.48,771.763C1331.1,772.224 1333.57,761.194 1342.47,767.357C1353.53,775.012 1337.82,799.89 1314.27,789.117C1290.73,778.345 1300.21,746.916 1311.49,735.942C1322.49,725.236 1359.63,716.774 1374.81,744.493C1389.99,772.212 1375.64,808.876 1349.7,817.082C1323.77,825.288 1303.84,819.59 1308.58,811.022C1313.32,802.455 1342.45,810.013 1356.66,783.261C1365.09,767.395 1364.27,745.986 1339.5,744.511C1320.56,743.383 1310.85,769.647 1327.48,771.763Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

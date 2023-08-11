@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 483 572" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-57,-16)">
+        <g id="Lock-Icon" transform="matrix(24.0918,0,0,23.8067,-20155.6,-67261.4)">
+            <path d="M857.5,2850L840.5,2850C839.672,2850 839,2849.33 839,2848.5L839,2836.5C839,2835.67 839.672,2835 840.5,2835L843,2835L843,2832C843,2828.69 845.686,2826 849,2826C852.314,2826 855,2828.69 855,2832L855,2835L857.5,2835C858.328,2835 859,2835.67 859,2836.5L859,2848.5C859,2849.33 858.328,2850 857.5,2850ZM847.5,2846L850.5,2846L849.716,2842.86C850.466,2842.57 851,2841.85 851,2841C851,2839.9 850.105,2839 849,2839C847.895,2839 847,2839.9 847,2841C847,2841.85 847.535,2842.57 848.284,2842.86L847.5,2846ZM853,2832C853,2829.79 851.209,2828 849,2828C846.791,2828 845,2829.79 845,2832L845,2835L853,2835L853,2832Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

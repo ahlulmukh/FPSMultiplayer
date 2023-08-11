@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 232 441" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-220,-61)">
+        <g transform="matrix(4.92819,0,0,4.92819,-2107.45,-544.803)">
+            <g id="Plus-Button-Dark" transform="matrix(1,0,0,1,-603.808,-573.084)">
+                <g transform="matrix(1,0,0,1,-181.758,-561.328)">
+                    <path d="M1304.82,1261.56C1304.82,1259.24 1302.93,1257.35 1300.6,1257.35L1262.19,1257.35C1259.87,1257.35 1257.98,1259.24 1257.98,1261.56L1257.98,1342.53C1257.98,1344.86 1259.87,1346.75 1262.19,1346.75L1300.6,1346.75C1302.93,1346.75 1304.82,1344.86 1304.82,1342.53L1304.82,1261.56Z" style="fill:rgb(59,59,59);"/>
+                </g>
+                <g transform="matrix(2.63555,0,0,2.63555,-2274.69,-2695.57)">
+                    <path d="M1281.39,1302.74L1284.21,1302.74L1284.21,1304.77L1281.39,1304.77L1281.39,1307.96L1279.24,1307.96L1279.24,1304.77L1276.41,1304.77L1276.41,1302.74L1279.24,1302.74L1279.24,1299.68L1281.39,1299.68L1281.39,1302.74Z" style="fill:white;fill-rule:nonzero;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

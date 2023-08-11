@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 327 408" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-8,-101)">
+        <g id="Volume-Icon" transform="matrix(17.1607,0,0,16.9576,-3183.58,-59012.8)">
+            <path d="M204,3510L204,3509.95C203.25,3509.84 202.573,3509.51 202.056,3509L202,3509L196,3503L189,3503C187.343,3503 186,3501.66 186,3500L186,3496C186,3494.34 187.343,3493 189,3493L196,3493L202,3487L202.056,3487C202.573,3486.49 203.25,3486.16 204,3486.05L204,3486L205,3486L205,3510L204,3510Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

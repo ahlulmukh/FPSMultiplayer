@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 438 218" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-117,-172)">
+        <g transform="matrix(4.92819,0,0,4.92819,-1548.05,-715.894)">
+            <g id="RB-Button-White" transform="matrix(1,0,0,1,-1053.52,13.8489)">
+                <g transform="matrix(-1,0,0,1,2684.86,-27.3346)">
+                    <g transform="matrix(1.04307,0,0,0.970392,-53.2863,5.25351)">
+                        <path d="M1237.32,211.144C1237.32,201.861 1230.31,194.325 1221.68,194.325C1213.04,194.325 1206.03,201.861 1206.03,211.144L1206.03,222.868C1206.03,232.151 1213.04,239.687 1221.68,239.687C1230.31,239.687 1237.32,232.151 1237.32,222.868L1237.32,211.144Z" style="fill:white;"/>
+                    </g>
+                    <g transform="matrix(1,0,0,1.0003,0,-0.0617179)">
+                        <path d="M1293.36,207.046C1293.36,205.547 1292.14,204.329 1290.64,204.329L1285.21,204.329C1283.71,204.329 1282.49,205.547 1282.49,207.046L1282.49,235.122C1282.49,236.622 1283.71,237.839 1285.21,237.839L1290.64,237.839C1292.14,237.839 1293.36,236.622 1293.36,235.122L1293.36,207.046Z" style="fill:white;"/>
+                    </g>
+                    <path d="M1222.04,193.909L1290.99,204.351L1290.43,237.842L1221.19,237.842L1222.04,193.909Z" style="fill:white;"/>
+                </g>
+                <g transform="matrix(1.08885,-6.20419e-33,-4.65314e-33,1.08885,436.47,91.7857)">
+                    <text x="920.359px" y="97.992px" style="font-family:'Roboto-Bold', 'Roboto';font-weight:700;font-size:21.047px;fill:rgb(36,36,36);">RB</text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

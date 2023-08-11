@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
 
     public Slider healthSlider;
 
+    public TextMeshProUGUI ammoText;
 
     public GameObject deathScreen;
     public TMP_Text deathText;

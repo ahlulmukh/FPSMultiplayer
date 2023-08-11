@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 447 408" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-8,-101)">
+        <g id="Volume-Min-Icon" transform="matrix(17.1607,0,0,16.9576,-6855.98,-59012.8)">
+            <path d="M423.14,3504.13L421.717,3502.7C423.106,3501.61 424,3499.91 424,3498C424,3496.09 423.106,3494.39 421.717,3493.3L423.14,3491.87C424.887,3493.34 426,3495.54 426,3498C426,3500.46 424.887,3502.66 423.14,3504.13ZM418,3509.95C417.25,3509.84 416.573,3509.51 416.056,3509L416,3509L410,3503L403,3503C401.343,3503 400,3501.66 400,3500L400,3496C400,3494.34 401.343,3493 403,3493L410,3493L416,3487L416.056,3487C416.573,3486.49 417.25,3486.16 418,3486.05L418,3486L419,3486L419,3510L418,3510L418,3509.95Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

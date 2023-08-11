@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 485 476" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-57,-62)">
+        <g id="Post-Icon" transform="matrix(20.176,0,0,19.8027,-5833.94,-55900)">
+            <path d="M314.5,2850L293.5,2850C292.672,2850 292,2849.33 292,2848.5L292,2827.5C292,2826.67 292.672,2826 293.5,2826L309.974,2826L306.975,2829L295,2829L295,2847L313,2847L313,2835.02L316,2832.02L316,2848.5C316,2849.33 315.328,2850 314.5,2850ZM314.797,2830.4L311.589,2827.2L312.123,2826.66C313.009,2825.77 314.446,2825.77 315.331,2826.66C316.217,2827.55 316.217,2828.98 315.331,2829.87L314.797,2830.4ZM299.001,2843L300.07,2838.72L300.605,2838.18L303.813,2841.39L303.278,2841.93L299.001,2843ZM313.728,2831.47L304.882,2840.33L301.674,2837.12L310.519,2828.26L313.728,2831.47Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

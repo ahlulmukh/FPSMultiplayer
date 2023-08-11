@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 567 560" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-24,-20)">
+        <g id="Line-Off-Icon" transform="matrix(8.36812,0,0,8.36812,-10990.6,-2101.35)">
+            <path d="M1378.61,319.463L1317.28,258.863C1316.05,257.649 1316.05,255.679 1317.28,254.466C1318.51,253.253 1320.5,253.253 1321.73,254.466L1331.22,263.849L1331.26,263.844L1343.22,275.661L1343.18,275.666L1364.63,296.866L1364.69,296.879L1371.24,303.343L1371.23,303.383L1383.05,315.067C1384.28,316.28 1384.28,318.25 1383.05,319.464C1381.83,320.677 1379.83,320.677 1378.61,319.463Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

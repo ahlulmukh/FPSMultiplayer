@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 483 572" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-57,-16)">
+        <g id="Unlock-Icon" transform="matrix(24.0918,0,0,23.8067,-22781.6,-67261.4)">
+            <path d="M966.5,2850L949.5,2850C948.672,2850 948,2849.33 948,2848.5L948,2836.5C948,2835.67 948.672,2835 949.5,2835L952,2835L952,2832C952,2828.69 954.686,2826 958,2826C961.314,2826 964,2828.69 964,2832L962,2832C962,2829.79 960.209,2828 958,2828C955.791,2828 954,2829.79 954,2832L954,2835L966.5,2835C967.328,2835 968,2835.67 968,2836.5L968,2848.5C968,2849.33 967.328,2850 966.5,2850ZM958,2839C956.895,2839 956,2839.9 956,2841C956,2841.85 956.535,2842.57 957.284,2842.86L956.5,2846L959.5,2846L958.716,2842.86C959.466,2842.57 960,2841.85 960,2841C960,2839.9 959.105,2839 958,2839Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

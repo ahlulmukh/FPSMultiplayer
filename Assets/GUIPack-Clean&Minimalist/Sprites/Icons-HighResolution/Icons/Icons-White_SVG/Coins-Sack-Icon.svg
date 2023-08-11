@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 452 554" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-74,-23)">
+        <g id="Coins-Sack-Icon" transform="matrix(7.88652,0,0,7.88652,-10307.5,-6486.77)">
+            <path d="M1353.57,850.896C1374.14,862.058 1389.1,895.552 1345.34,895.552C1301.57,895.552 1315.19,863.11 1335.73,850.896L1353.57,850.896ZM1354.38,846.784L1336.3,846.784L1326.97,838.078C1326.97,838.078 1327.43,835.138 1330.01,833.216C1330.68,832.711 1331.33,832.325 1331.95,832.03L1339.63,841.535L1335.03,827.895C1337.78,826.438 1341.39,825.554 1345.34,825.554C1349.28,825.554 1352.89,826.438 1355.65,827.895L1351.05,841.535L1358.73,832.03C1359.34,832.325 1359.99,832.711 1360.67,833.216C1363.24,835.138 1363.7,838.078 1363.7,838.078L1354.38,846.784Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

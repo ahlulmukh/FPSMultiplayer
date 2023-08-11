@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 581 224" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(8.7606,0,0,8.76819,-10220.3,-2917.29)">
+        <g transform="matrix(1,0,0,1,-1.04492,-5.37109)">
+            <path d="M1233.47,344.742C1233.47,341.366 1230.73,338.625 1227.35,338.625L1174.3,338.625C1170.92,338.625 1168.17,341.366 1168.17,344.742L1168.17,356.976C1168.17,360.352 1170.92,363.093 1174.3,363.093L1227.35,363.093C1230.73,363.093 1233.47,360.352 1233.47,356.976L1233.47,344.742Z" style="fill:none;stroke:white;stroke-width:0.98px;"/>
+        </g>
+        <g transform="matrix(0.123512,0,0,0.123405,1169.82,333.834)">
+            <text x="87.553px" y="145.202px" style="font-family:'Vegur-Bold', 'Vegur';font-weight:700;font-size:144px;fill:white;">SALE</text>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 530 502" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-35,-49)">
+        <g id="Bubble-Right-Icon" transform="matrix(-22.0556,0,0,21.7946,14217.1,-59166.5)">
+            <path d="M631,2737.05C630.194,2737.05 629.407,2736.99 628.646,2736.86C628.639,2736.86 621.651,2740.01 621.651,2740.01C621.651,2740.01 623.956,2735.13 623.969,2735.14C620.963,2733.32 619,2730.37 619,2727.03C619,2721.49 624.373,2717 631,2717C637.627,2717 643,2721.49 643,2727.03C643,2732.57 637.627,2737.05 631,2737.05Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

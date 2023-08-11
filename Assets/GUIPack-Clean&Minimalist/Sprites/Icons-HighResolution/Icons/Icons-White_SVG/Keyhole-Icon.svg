@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 312 540" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-144,-30)">
+        <g id="Keyhole-Icon" transform="matrix(3.23576,0,0,3.23576,-665.448,-1023.67)">
+            <path d="M262.23,492.397L334.505,492.397L315.609,417.695C333.677,410.824 346.551,393.632 346.551,373.371C346.551,347.064 324.981,325.754 298.368,325.754C271.756,325.754 250.187,347.064 250.187,373.371C250.187,393.632 263.064,410.824 281.128,417.695L262.23,492.397Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

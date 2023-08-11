@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 270 270" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-201,-146)">
+        <g transform="matrix(4.92819,0,0,4.92819,-1604.2,-2564.89)">
+            <g id="B-Button-White" transform="matrix(1,0,0,1,64.6171,141.741)">
+                <g transform="matrix(1,0,0,1,-599.306,275.292)">
+                    <circle cx="928.402" cy="160.507" r="27.32" style="fill:white;"/>
+                </g>
+                <g transform="matrix(0.819727,0,0,0.819727,-432.486,-174.236)">
+                    <g>
+                        <path d="M929.067,726.765C938.686,726.765 946.494,734.574 946.494,744.192C946.494,753.81 938.686,761.619 929.067,761.619C919.449,761.619 911.64,753.81 911.64,744.192C911.64,734.574 919.449,726.765 929.067,726.765ZM929.067,731.045C936.323,731.045 942.214,736.936 942.214,744.192C942.214,751.448 936.323,757.339 929.067,757.339C921.811,757.339 915.92,751.448 915.92,744.192C915.92,736.936 921.811,731.045 929.067,731.045Z" style="fill:rgb(241,50,66);"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

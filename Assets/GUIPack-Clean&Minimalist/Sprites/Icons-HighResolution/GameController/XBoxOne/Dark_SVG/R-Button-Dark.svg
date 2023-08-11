@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 423 423" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-81,-63)">
+        <g transform="matrix(5.27077,0,0,5.27077,-893.013,-1261.17)">
+            <g id="R-Button-Dark" transform="matrix(1,0,0,1,-1273.49,-47.1302)">
+                <g transform="matrix(1,0,0,1,53.4746,153.996)">
+                    <circle cx="1444.98" cy="184.467" r="40.088" style="fill:rgb(59,59,59);"/>
+                </g>
+                <g transform="matrix(1.77719,-1.01263e-32,-7.59471e-33,1.77719,-160.373,176.894)">
+                    <text x="927.111px" y="97.992px" style="font-family:'Roboto-Bold', 'Roboto';font-weight:700;font-size:21.047px;fill:white;">R</text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

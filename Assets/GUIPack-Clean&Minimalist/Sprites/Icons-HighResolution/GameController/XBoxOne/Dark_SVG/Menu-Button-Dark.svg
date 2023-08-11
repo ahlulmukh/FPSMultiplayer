@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 243 243" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-171,-153)">
+        <g transform="matrix(5.27077,0,0,5.27077,-893.013,-1261.17)">
+            <g id="Menu-Button-Dark" transform="matrix(1,0,0,1,-1421.43,-41.8294)">
+                <g transform="matrix(1.95066,0,0,1.95066,91.4159,-217.635)">
+                    <circle cx="797.154" cy="282.365" r="11.753" style="fill:rgb(59,59,59);"/>
+                </g>
+                <path d="M1656.34,337.919L1656.34,340.736L1636.8,340.736L1636.8,337.919L1656.34,337.919ZM1636.8,332.035L1656.34,332.035L1656.34,334.852L1636.8,334.852L1636.8,332.035ZM1636.8,326.246L1656.34,326.246L1656.34,329.063L1636.8,329.063L1636.8,326.246Z" style="fill:white;"/>
+            </g>
+        </g>
+    </g>
+</svg>

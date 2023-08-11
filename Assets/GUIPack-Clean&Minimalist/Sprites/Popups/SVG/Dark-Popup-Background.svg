@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g id="Dark-Popup-Background" transform="matrix(1.00517,0,0,1.00517,-4.41246,1.01475)">
+        <path d="M800.272,6.949C800.272,2.557 796.706,-1.01 792.313,-1.01L12.349,-1.01C7.956,-1.01 4.39,2.557 4.39,6.949L4.39,786.914C4.39,791.307 7.956,794.873 12.349,794.873L792.313,794.873C796.706,794.873 800.272,791.307 800.272,786.914L800.272,6.949Z"/>
+    </g>
+</svg>

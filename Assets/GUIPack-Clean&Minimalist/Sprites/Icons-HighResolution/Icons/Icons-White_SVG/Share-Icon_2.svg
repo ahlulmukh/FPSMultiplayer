@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 583 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-8,-60)">
+        <g id="Share-Icon" transform="matrix(24.226,0,0,23.9393,-17627.7,-67639.6)">
+            <path d="M752,2834L745,2840L745,2836L744,2836C740.82,2836 737.954,2837.93 736,2840C736.207,2836.03 739.715,2832 744,2832L745,2832L745,2828L752,2834ZM736.322,2834L731,2834L731,2845L746,2845L746,2842.14L749,2839.57L749,2846.5C749,2847.33 748.328,2848 747.5,2848L729.5,2848C728.672,2848 728,2847.33 728,2846.5L728,2832.5C728,2831.67 728.672,2831 729.5,2831L739.393,2831C738.145,2831.72 737.089,2832.78 736.322,2834Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 520 506" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-40,-47)">
+        <g id="Magnet-Icon" transform="matrix(6.5155,1.07569e-31,1.07569e-31,6.43838,-4544.77,-6410.92)">
+            <path d="M783.329,1003.15L783.329,1041.69C783.329,1063.67 765.488,1081.51 743.512,1081.51C721.536,1081.51 703.694,1063.67 703.694,1041.69L703.694,1003.15L730.118,1003.15L730.118,1041.97C730.118,1049.37 736.119,1055.37 743.512,1055.37C750.904,1055.37 756.905,1049.37 756.905,1041.97L756.905,1003.15L783.329,1003.15ZM761.207,1023.23L779.183,1023.23L779.183,1007.11L761.207,1007.11L761.207,1023.23ZM725.826,1007.11L707.85,1007.11L707.85,1023.23L725.826,1023.23L725.826,1007.11Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

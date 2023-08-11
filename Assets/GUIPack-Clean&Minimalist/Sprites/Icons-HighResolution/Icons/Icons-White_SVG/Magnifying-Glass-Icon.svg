@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 555 552" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-22,-24)">
+        <g id="Magnifying-Glass-Icon" transform="matrix(9.90595,0,0,9.90595,-2607.83,-7448.88)">
+            <path d="M304.988,799.222C300.9,802.11 295.896,803.811 290.492,803.811C276.717,803.811 265.533,792.759 265.533,779.146C265.533,765.534 276.717,754.482 290.492,754.482C304.268,754.482 315.452,765.534 315.452,779.146C315.452,784.614 313.648,789.668 310.596,793.759L320.318,803.366C321.854,804.885 321.855,807.35 320.318,808.869C318.782,810.387 316.287,810.387 314.75,808.868L304.988,799.222ZM290.492,762.743C299.654,762.743 307.092,770.093 307.092,779.146C307.092,788.2 299.654,795.55 290.492,795.55C281.331,795.55 273.892,788.2 273.892,779.146C273.892,770.093 281.331,762.743 290.492,762.743Z" style="fill:white;"/>
+        </g>
+    </g>
+</svg>

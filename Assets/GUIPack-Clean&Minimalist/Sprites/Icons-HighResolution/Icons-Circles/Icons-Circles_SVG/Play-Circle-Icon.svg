@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 570 572" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-15,-14)">
+        <path id="Play-Circle-Icon" d="M299.999,585.001C142.598,585.001 15,457.407 15,300.003C15,142.607 142.598,14.999 299.999,14.999C457.4,14.999 585,142.607 585,300.003C585,457.407 457.4,585.001 299.999,585.001ZM238.866,201.878C238.866,197.103 241.237,193.03 245.402,190.66C249.568,188.285 254.295,188.308 258.439,190.723L432.768,292.269C436.872,294.666 439.197,298.699 439.197,303.431C439.197,308.156 436.872,312.197 432.768,314.583L258.439,416.142C254.295,418.544 249.568,418.573 245.402,416.2C241.237,413.825 238.866,409.754 238.866,404.98L238.866,201.878Z" style="fill:white;"/>
+    </g>
+</svg>
