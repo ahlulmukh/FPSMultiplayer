@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     [SerializeField] private float muzzleDisplayTime;
     [SerializeField] private GameObject knifeObject;
+    [SerializeField] private GameObject handgunObject;
     private Animator knifeAnimator;
+    private Animator handgunAnimator;
     private float _muzzleCounter;
 
 
@@ -61,12 +63,16 @@ public class PlayerController : MonoBehaviourPunCallbacks
     [SerializeField] private Transform modelGunPoint;
     [SerializeField] private Transform gunHolder;
 
+    [SerializeField] private Animator animMale;
+
+    [SerializeField] private Animator animHandgun;
+
+    [SerializeField] private Animator animRifle;
+
 
     public Material[] allSkins;
     public float adsSpeed = 5f;
     private int _currentHealth;
-    public Animation _animation;
-    public AnimationClip draw;
     public Transform adsOutPoint, adsInPoint;
 
 
@@ -107,6 +113,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (knifeObject != null)
         {
             knifeAnimator = knifeObject.GetComponent<Animator>();
+        }
+
+        if (knifeObject != null)
+        {
+            handgunAnimator = handgunObject.GetComponent<Animator>();
         }
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -205,9 +216,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
             if(Input.GetKey(KeyCode.LeftShift))
             {
                 _activeMoveSpeed = runSpeed;
-
-                if(!fast.isPlaying && _moveDirection != Vector3.zero)
+                if (!fast.isPlaying && _moveDirection != Vector3.zero)
                 {
+   
                     fast.Play();
                     slow.Stop();
                 }
@@ -215,8 +226,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
             else
             {
                 _activeMoveSpeed = moveSpeed;
-
-                if(!slow.isPlaying && _moveDirection != Vector3.zero)
+               
+                if (!slow.isPlaying && _moveDirection != Vector3.zero)
                 {
                     fast.Stop();
                     slow.Play();
@@ -244,6 +255,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             if(Input.GetButtonDown("Jump") && _isGrounded)
             {
+
                 _movement.y = jumpForce;
             }
 
@@ -305,8 +317,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
             anim.SetBool("grounded", _isGrounded);
             anim.SetFloat("speed", _moveDirection.magnitude);
 
+            // Male Animasi
+            animMale.SetBool("grounded", _isGrounded);
+            animMale.SetFloat("speed", _moveDirection.magnitude);
 
-            if(Input.GetMouseButton(1))
+            // Handgun Animasi
+            animHandgun.SetBool("grounded", _isGrounded);
+            animHandgun.SetFloat("speed", _moveDirection.magnitude);
+
+            // Handgun Animasi
+            animRifle.SetBool("grounded", _isGrounded);
+            animRifle.SetFloat("speed", _moveDirection.magnitude);
+
+
+            if (Input.GetMouseButton(1))
             {
                 _cam.fieldOfView =  Mathf.Lerp(_cam.fieldOfView, allGuns[_selectedGun].adsZoom, adsSpeed * Time.deltaTime);
                 gunHolder.position = Vector3.Lerp(gunHolder.position, adsInPoint.position, adsSpeed * Time.deltaTime);
@@ -337,31 +361,46 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     private void CheckForShot()
     {
-        if (isReloading) { return; }
 
-        if (Input.GetMouseButtonDown(0))
+        if (allGuns[_selectedGun].isMale)
         {
-            Shoot();
-            recoiling = true;
-        }
-        if (Input.GetMouseButton(0) && allGuns[_selectedGun].isAutomatic)
-        {
-            _shotCounter -= Time.deltaTime;
-            if (_shotCounter <= 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                Shoot();
-                recoiling = true;
+                KnifeAttack();
             }
         }
-
-        if (recoiling)
+        else
         {
-            Recoil();
-        }
+            if (isReloading) { return; }
 
-        if (recovering)
-        {
-            Recovering();
+            if (Input.GetMouseButtonDown(0))
+            {
+                animHandgun.CrossFadeInFixedTime("Fire", 0.01f);
+                Shoot();
+                recoiling = false;
+            }
+
+
+            if (Input.GetMouseButton(0) && allGuns[_selectedGun].isAutomatic)
+            {
+                _shotCounter -= Time.deltaTime;
+                if (_shotCounter <= 0)
+                {
+                    animRifle.CrossFadeInFixedTime("Fire", 0.01f);
+                    Shoot();
+                    recoiling = false;
+                }
+            }
+
+            if (recoiling)
+            {
+                Recoil();
+            }
+
+            if (recovering)
+            {
+                Recovering();
+            }
         }
     }
 
@@ -373,8 +412,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             if (knifeAnimator != null)
             {
                 // Jalankan animasi serangan pisau
-                knifeAnimator.SetTrigger("attacking");
-                StartCoroutine(ResetAttackingTrigger());
+                knifeAnimator.SetTrigger("attack");
             }
 
             // Periksa jika pisau berhasil mengenai pemain dari jarak dekat
@@ -388,16 +426,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 }
             }
         }
-    }
-
-
-    private IEnumerator ResetAttackingTrigger()
-    {
-        // Tunggu sampai animasi serangan pisau selesai
-        yield return new WaitForSeconds(knifeAnimator.GetCurrentAnimatorStateInfo(0).length);
-
-        // Atur kembali trigger "attacking" ke nilai default
-        knifeAnimator.ResetTrigger("attacking");
     }
     private void Shoot()
     {
@@ -435,13 +463,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
         }
 
-
-
-      //  if(_selectedGun != 2)
-        //{
-          //  _shotCounter = allGuns[_selectedGun].timeBetweenShots;
-          //  _heatCouner += allGuns[_selectedGun].heatPerShot;
-      //  }
 
         if (_selectedGun != 2) // Pemeriksaan jika senjata yang dipilih bukan pisau
         {
@@ -571,8 +592,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     void SwitchGun()
     {
 
-        _animation.Stop();
-        _animation.Play(draw.name);
 
         foreach (Gun gun in allGuns)
         {

@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour
 {
     public GameObject muzzleFlash;
     public bool isAutomatic;
+    public bool isMale;
     public float timeBetweenShots = .1f;
     public float heatPerShot = 1f;
     public int ammo;
