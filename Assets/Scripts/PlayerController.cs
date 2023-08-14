@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject playerModel;
     [SerializeField] private GameObject armsHandgun;
     [SerializeField] private GameObject armsRifle;
+    [SerializeField] private GameObject armsKnife;
     [SerializeField] private Transform modelGunPoint;
     [SerializeField] private Transform gunHolder;
 
@@ -143,6 +144,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         else{
             armsHandgun.SetActive(false);
             armsRifle.SetActive(false);
+            armsKnife.SetActive(false);
             gunHolder.parent = modelGunPoint;
             gunHolder.localPosition = Vector3.zero;
             gunHolder.localRotation = Quaternion.identity;
