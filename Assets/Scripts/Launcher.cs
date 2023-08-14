@@ -243,7 +243,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     public void CloseRoomBrowser()
     {
         CloseMenus();
-        loadingScreen.SetActive(true);
+        menuButtons.SetActive(true);
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
