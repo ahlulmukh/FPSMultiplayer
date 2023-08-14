@@ -73,7 +73,7 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.Tab) && state != GameState.Ending)
+        if(SimpleInput.GetButton("Leaderboard") && state != GameState.Ending)
         {
             ShowLeaderboard();
         }
