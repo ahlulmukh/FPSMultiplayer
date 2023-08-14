@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.InputSystem;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
@@ -24,7 +27,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     [SerializeField] private float coolRate = 4f;
     [SerializeField] private float overheatCoolRate = 5f;
     [SerializeField] private bool invertLook;
-
     [SerializeField] private float knifeAttackRange = 2f; // Jarak serangan pisau
     [SerializeField] private int knifeAttackDamage = 25;
 
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private float _activeMoveSpeed;
     private float _heatCouner;
     private bool _isGrounded;
+
 
 
     
@@ -105,22 +108,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private Coroutine reloadCo;
     private Coroutine reloadAnimationCo;
 
+    private FixedJoystick joystick;
+
 
 
     void Start()
     {
+        joystick = UIController.instance.joystick;
 
         if (knifeObject != null)
         {
             knifeAnimator = knifeObject.GetComponent<Animator>();
         }
 
-        if (knifeObject != null)
-        {
-            handgunAnimator = handgunObject.GetComponent<Animator>();
-        }
-
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         _cam = Camera.main;
         //SwitchGun();
         photonView.RPC("SetGun", RpcTarget.All, _selectedGun);
@@ -183,37 +184,40 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if(photonView.IsMine)
         {
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (_selectedGun == 2) // Pemeriksaan jika senjata yang dipilih adalah pisau
+            if (SimpleInput.GetButtonDown("Shoot"))
+             {
+                  if (_selectedGun == 2) // Pemeriksaan jika senjata yang dipilih adalah pisau
                 {
-                    KnifeAttack();
-                }
-            }
+                      KnifeAttack();
+             }
+             }
 
-            _mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity;
 
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 
-                transform.rotation.eulerAngles.y + _mouseInput.x ,transform.rotation.eulerAngles.z);
+            _mouseInput = new Vector2(SimpleInput.GetAxis("Look X"), SimpleInput.GetAxis("Look Y")) * mouseSensitivity;
+
+           transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x,
+               transform.rotation.eulerAngles.y + _mouseInput.x, transform.rotation.eulerAngles.z);
 
             _verticalRotStore += _mouseInput.y;
             _verticalRotStore = Mathf.Clamp(_verticalRotStore, -60f, 60f);
 
-            if(invertLook){
-                viewPoint.rotation = Quaternion.Euler(_verticalRotStore, 
+            if (invertLook)
+            {
+                viewPoint.rotation = Quaternion.Euler(_verticalRotStore,
                     viewPoint.rotation.eulerAngles.y, viewPoint.rotation.eulerAngles.z);
             }
             else
             {
-                viewPoint.rotation = Quaternion.Euler(-_verticalRotStore, 
+                viewPoint.rotation = Quaternion.Euler(-_verticalRotStore,
                     viewPoint.rotation.eulerAngles.y, viewPoint.rotation.eulerAngles.z);
-            }
+            } 
+          
 
-            _moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+            // Memproses input untuk pergerakan karakter dari joystick
+            _moveDirection = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
+    
 
-
-
-            if(Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 _activeMoveSpeed = runSpeed;
                 if (!fast.isPlaying && _moveDirection != Vector3.zero)
@@ -251,13 +255,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 _movement.y = yVal;
             }
 
-            _isGrounded = Physics.Raycast(groundCheckPoint.position, Vector3.down, .25f, groundLayers);
+             _isGrounded = Physics.Raycast(groundCheckPoint.position, Vector3.down, .25f, groundLayers);
 
-            if(Input.GetButtonDown("Jump") && _isGrounded)
-            {
+             if(SimpleInput.GetButtonDown("Jump") && _isGrounded)
+             {
 
-                _movement.y = jumpForce;
-            }
+                 _movement.y = jumpForce;
+             }
+           
 
             _movement.y += Physics.gravity.y * Time.deltaTime * gravityMod;
 
@@ -277,7 +282,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
             CheckForShot();
             CheckForReload();
             CountdownTimeBetweenShots();
-            if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
+
+
+/*            if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
             {
                 _selectedGun++;
                 if(_selectedGun >= allGuns.Count)
@@ -300,20 +307,29 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 //SwitchGun();
                 photonView.RPC("SetGun", RpcTarget.All, _selectedGun);
                 UpdateUI();
-            }
+            }*/
 
-            for(var i = 0; i < allGuns.Count; i++)
+
+            if (SimpleInput.GetButtonDown("Weapon"))
             {
-                if(Input.GetKeyDown((i + 1).ToString()))
-                {
-                    _selectedGun = i;
-                    //SwitchGun();
-                    photonView.RPC("SetGun", RpcTarget.All, _selectedGun);
-                    UpdateUI();
-                }
+                _selectedGun = (_selectedGun + 1) % allGuns.Count;
+                //SwitchGun();
+                photonView.RPC("SetGun", RpcTarget.All, _selectedGun);
+                UpdateUI();
             }
 
-            
+            /*     for (var i = 0; i < allGuns.Count; i++)
+                 {
+                     if(SimpleInput.GetButtonDown("Weapon"))
+                     {
+                         _selectedGun = i;
+                         //SwitchGun();
+                         photonView.RPC("SetGun", RpcTarget.All, _selectedGun);
+                         UpdateUI();
+                     }
+                 }*/
+
+
             anim.SetBool("grounded", _isGrounded);
             anim.SetFloat("speed", _moveDirection.magnitude);
 
@@ -330,12 +346,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
             animRifle.SetFloat("speed", _moveDirection.magnitude);
 
 
-            if (Input.GetMouseButton(1))
+            if (SimpleInput.GetButton("Scope"))
             {
                 _cam.fieldOfView =  Mathf.Lerp(_cam.fieldOfView, allGuns[_selectedGun].adsZoom, adsSpeed * Time.deltaTime);
                 gunHolder.position = Vector3.Lerp(gunHolder.position, adsInPoint.position, adsSpeed * Time.deltaTime);
             }
-            else
+            else 
             {
                 _cam.fieldOfView =  Mathf.Lerp(_cam.fieldOfView, 60f, adsSpeed * Time.deltaTime);
                 gunHolder.position = Vector3.Lerp(gunHolder.position, adsOutPoint.position, adsSpeed * Time.deltaTime);
@@ -343,7 +359,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
 
 
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if(SimpleInput.GetButtonDown("Pause"))
             {
                 Cursor.lockState = CursorLockMode.None;
                 
@@ -352,19 +368,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
             {
                 if(Input.GetMouseButtonDown(0) && !UIController.instance.optionsScreen.activeInHierarchy)
                 {
-                    Cursor.lockState = CursorLockMode.Locked;
+                    //Cursor.lockState = CursorLockMode.Locked;
                 }
             }
 
         }
     }
 
+
     private void CheckForShot()
     {
 
         if (allGuns[_selectedGun].isMale)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (SimpleInput.GetButtonDown("Shoot"))
             {
                 KnifeAttack();
             }
@@ -373,36 +390,30 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             if (isReloading) { return; }
 
-            if (Input.GetMouseButtonDown(0))
+            if (SimpleInput.GetButtonDown("Shoot"))
             {
                 animHandgun.CrossFadeInFixedTime("Fire", 0.01f);
                 Shoot();
                 recoiling = false;
             }
 
+           // Input.GetMouseButton(0)
+              if (SimpleInput.GetButton("Shoot") && allGuns[_selectedGun].isAutomatic)
+              {
 
-            if (Input.GetMouseButton(0) && allGuns[_selectedGun].isAutomatic)
-            {
                 _shotCounter -= Time.deltaTime;
-                if (_shotCounter <= 0)
-                {
-                    animRifle.CrossFadeInFixedTime("Fire", 0.01f);
-                    Shoot();
-                    recoiling = false;
+                  if (_shotCounter <= 0)
+                  {
+                      animRifle.CrossFadeInFixedTime("Fire", 0.01f);
+                      Shoot();
+                      recoiling = false;
                 }
-            }
+              }
 
-            if (recoiling)
-            {
-                Recoil();
-            }
 
-            if (recovering)
-            {
-                Recovering();
-            }
         }
     }
+ 
 
 
     public void KnifeAttack()
@@ -535,35 +546,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         ammoText.text = allGuns[_selectedGun].currentAmmo.ToString() + " / " + allGuns[_selectedGun].ammo.ToString();
     }
 
-    void Recoil()
-    {
-        Vector3 finalPosition = new Vector3(originalPosition.x, originalPosition.y, originalPosition.z - recoilBack);
-
-        allGuns[_selectedGun].transform.localPosition = Vector3.SmoothDamp(allGuns[_selectedGun].transform.localPosition, finalPosition, ref recoilVelocity, recoilLength);
-
-        if (allGuns[_selectedGun].transform.localPosition == finalPosition)
-        {
-            recoiling = false;
-            recovering = true;
-        }
-    }
-
-
-    void Recovering()
-    {
-        Vector3 finalPosition = originalPosition;
-
-        allGuns[_selectedGun].transform.localPosition = Vector3.SmoothDamp(allGuns[_selectedGun].transform.localPosition, finalPosition, ref recoilVelocity, recoverLenth);
-
-        if (allGuns[_selectedGun].transform.localPosition == finalPosition)
-        {
-            recoiling = false;
-            recovering = false;
-        }
-    }
-
-
-
+    
 
     [PunRPC]
     public void DealDamage(string damager, int damageAmount, int actor)
