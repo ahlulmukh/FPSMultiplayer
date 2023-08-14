@@ -29,7 +29,12 @@ public class UIController : MonoBehaviour
 
     public TMP_Text timerText;
 
-    
+    public TextMeshProUGUI FpsText;
+    private float pollingTime = 1f;
+    private float time;
+    private int frameCount;
+
+    public TextMeshProUGUI PingText;
     public GameObject optionsScreen;
 
 
@@ -57,7 +62,31 @@ public class UIController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-        } 
+        }
+
+        FpsDisplay();
+    }
+
+    void FpsDisplay()
+    {
+        time += Time.deltaTime;
+
+        frameCount++;
+
+        if(time >= pollingTime)
+        {
+            int frameRate =  Mathf.RoundToInt(frameCount / time);
+            FpsText.text = frameRate.ToString() + " FPS";
+
+            time -= pollingTime;
+            frameCount = 0;
+        }
+
+        if (PhotonNetwork.IsConnected)
+        {
+            int ping = PhotonNetwork.GetPing();
+            PingText.text = "Ping: " + ping + " ms"; // Update teks elemen UI dengan nilai ping
+        }
     }
 
     public void ShowHideOptions()
