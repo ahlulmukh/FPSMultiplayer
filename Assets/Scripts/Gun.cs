@@ -15,6 +15,9 @@ public class Gun : MonoBehaviour
     public float adsZoom;
     public int shotDamage;
 
+    [HideInInspector]
+    public bool isMuzzleFlashActive;
+
     public AudioSource shotSound;
 
     private void Start()

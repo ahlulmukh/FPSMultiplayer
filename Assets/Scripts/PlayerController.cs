@@ -440,15 +440,33 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
         }
     }
+
+
+
+    [PunRPC]
+    private void ShowMuzzleFlashRPC()
+    {
+        allGuns[_selectedGun].muzzleFlash.SetActive(true);
+        _muzzleCounter = muzzleDisplayTime;
+        StartCoroutine(DeactivateMuzzleFlash());
+    }
+
+    private IEnumerator DeactivateMuzzleFlash()
+    {
+        yield return new WaitForSeconds(muzzleDisplayTime);
+        allGuns[_selectedGun].muzzleFlash.SetActive(false);
+    }
+
+
     private void Shoot()
     {
 
 
-        if (_selectedGun != 2) // Pemeriksaan jika senjata yang dipilih bukan pisau
-        {
-            allGuns[_selectedGun].muzzleFlash.SetActive(true);
-            _muzzleCounter = muzzleDisplayTime;
-        }
+        /*  if (_selectedGun != 2) // Pemeriksaan jika senjata yang dipilih bukan pisau
+          {
+              allGuns[_selectedGun].muzzleFlash.SetActive(true);
+              _muzzleCounter = muzzleDisplayTime;
+          }*/
 
         if (_shotCounter > 0) { return; }
         if (isReloading) { return; }
@@ -477,13 +495,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
 
 
-        if (_selectedGun != 2) // Pemeriksaan jika senjata yang dipilih bukan pisau
-        {
-            allGuns[_selectedGun].muzzleFlash.SetActive(true);
-        }
+        /* if (_selectedGun != 2) // Pemeriksaan jika senjata yang dipilih bukan pisau
+         {
+             allGuns[_selectedGun].muzzleFlash.SetActive(true);
+         }*/
 
-        _muzzleCounter = muzzleDisplayTime;
-
+        // _muzzleCounter = muzzleDisplayTime;
+        photonView.RPC("ShowMuzzleFlashRPC", RpcTarget.All);
+        ShowMuzzleFlashRPC();
         _shotCounter = allGuns[_selectedGun].timeBetweenShots;
 
         allGuns[_selectedGun].ReduceCurrentAmmo();

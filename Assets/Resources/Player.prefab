@@ -1162,6 +1162,7 @@ MonoBehaviour:
   reloadDuration: 1
   adsZoom: 1
   shotDamage: 1
+  isMuzzleFlashActive: 0
   shotSound: {fileID: 7226084561652318576}
 --- !u!82 &7226084561652318576
 AudioSource:
@@ -1933,6 +1934,7 @@ MonoBehaviour:
   reloadDuration: 2
   adsZoom: 30
   shotDamage: 25
+  isMuzzleFlashActive: 0
   shotSound: {fileID: 1005955069132911432}
 --- !u!82 &1005955069132911432
 AudioSource:
@@ -3134,6 +3136,7 @@ MonoBehaviour:
   reloadDuration: 2
   adsZoom: 50
   shotDamage: 25
+  isMuzzleFlashActive: 0
   shotSound: {fileID: 9108700419176016229}
 --- !u!82 &9108700419176016229
 AudioSource:

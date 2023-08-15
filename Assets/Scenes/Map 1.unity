@@ -10924,9 +10924,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6450520487450753287, guid: daec1717e0fd90e49a9c3dee2d359794, type: 3}
+      propertyPath: state
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450520487450753287, guid: daec1717e0fd90e49a9c3dee2d359794, type: 3}
+      propertyPath: killsToWin
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450520487450753287, guid: daec1717e0fd90e49a9c3dee2d359794, type: 3}
       propertyPath: mapCamPoint
       value: 
       objectReference: {fileID: 1650750065}
+    - target: {fileID: 6450520487450753287, guid: daec1717e0fd90e49a9c3dee2d359794, type: 3}
+      propertyPath: matchLenght
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450520487450753287, guid: daec1717e0fd90e49a9c3dee2d359794, type: 3}
+      propertyPath: waitAfterEnding
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
