@@ -34,6 +34,8 @@ public class UIController : MonoBehaviour
     private float time;
     private int frameCount;
 
+    public Image damageScreen;
+
     public TextMeshProUGUI PingText;
     public GameObject optionsScreen;
 

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
-using UnityEngine.InputSystem;
-using UnityStandardAssets.CrossPlatformInput;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
@@ -108,14 +106,16 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private TextMeshProUGUI ammoText;
     private Coroutine reloadCo;
     private Coroutine reloadAnimationCo;
-
     private FixedJoystick joystick;
+    private Image damageScreen;
 
 
 
     void Start()
     {
         joystick = UIController.instance.joystick;
+        damageScreen = UIController.instance.damageScreen;
+        damageScreen.gameObject.SetActive(false);
 
         if (knifeObject != null)
         {
@@ -580,17 +580,25 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             _currentHealth -= damageAmount;
-
+            
             if (_currentHealth <= 0)
             {
                 _currentHealth = 0;
                 PlayerSpawner.instance.Die(damager);
                 MatchManager.instance.UpdateStatsSend(actor, 0, 1);
             }
-
+            damageScreen.gameObject.SetActive(true);
+            StartCoroutine(DeactivateDamageScreen());
             UIController.instance.healthSlider.value = _currentHealth;
         }
     }
+
+    private IEnumerator DeactivateDamageScreen()
+    {
+        yield return new WaitForSeconds(1.0f); // Ganti dengan waktu yang sesuai
+        damageScreen.gameObject.SetActive(false);
+    }
+
 
 
     void SwitchGun()
