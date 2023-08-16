@@ -110,12 +110,17 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private Image damageScreen;
 
 
+    private AudioSource gunshotAudioSource; // tambahkan variabel ini
+    public float maxSoundDistance = 10.0f;
+
 
     void Start()
     {
         joystick = UIController.instance.joystick;
         damageScreen = UIController.instance.damageScreen;
         damageScreen.gameObject.SetActive(false);
+        gunshotAudioSource = gameObject.AddComponent<AudioSource>();
+        gunshotAudioSource.spatialBlend = 1.0f;
 
         if (knifeObject != null)
         {
@@ -191,7 +196,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                   if (_selectedGun == 2) // Pemeriksaan jika senjata yang dipilih adalah pisau
                 {
                       KnifeAttack();
-             }
+                 }
              }
 
 
@@ -335,18 +340,22 @@ public class PlayerController : MonoBehaviourPunCallbacks
             anim.SetBool("grounded", _isGrounded);
             anim.SetFloat("speed", _moveDirection.magnitude);
 
-            // Male Animasi
-            animMale.SetBool("grounded", _isGrounded);
-            animMale.SetFloat("speed", _moveDirection.magnitude);
 
-            // Handgun Animasi
-            animHandgun.SetBool("grounded", _isGrounded);
-            animHandgun.SetFloat("speed", _moveDirection.magnitude);
-
-            // Handgun Animasi
-            animRifle.SetBool("grounded", _isGrounded);
-            animRifle.SetFloat("speed", _moveDirection.magnitude);
-
+            if (_selectedGun == 0) // Pemeriksaan jika senjata yang dipilih adalah pisau
+            {
+                // Handgun Animasi
+                animRifle.SetBool("grounded", _isGrounded);
+                animRifle.SetFloat("speed", _moveDirection.magnitude);
+            } else if(_selectedGun == 1)
+            {
+                animHandgun.SetBool("grounded", _isGrounded);
+                animHandgun.SetFloat("speed", _moveDirection.magnitude);
+            } else if(_selectedGun == 2)
+            {
+                animMale.SetBool("grounded", _isGrounded);
+                animMale.SetFloat("speed", _moveDirection.magnitude);
+            }
+           
 
             if (SimpleInput.GetButton("Scope"))
             {
@@ -394,7 +403,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             if (SimpleInput.GetButtonDown("Shoot"))
             {
-                animHandgun.CrossFadeInFixedTime("Fire", 0.01f);
+                if(_selectedGun == 1)
+                {
+                    animHandgun.CrossFadeInFixedTime("Fire", 0.01f);
+                }
                 Shoot();
                 recoiling = false;
             }
@@ -457,6 +469,25 @@ public class PlayerController : MonoBehaviourPunCallbacks
         allGuns[_selectedGun].muzzleFlash.SetActive(false);
     }
 
+    [PunRPC]
+    private void ShootAndPlaySound(int actorNumber)
+    {
+        if (actorNumber == photonView.Owner.ActorNumber)
+        {
+            Shoot(); // Call your existing shooting logic
+                     // Play the gunshot sound on the shooter's client
+            float distance = Vector3.Distance(transform.position, _cam.transform.position);
+
+            // Atur volume berdasarkan jarak
+            float volume = Mathf.Clamp01(1.0f - (distance / maxSoundDistance));
+            gunshotAudioSource.volume = volume;
+            gunshotAudioSource.PlayOneShot(allGuns[_selectedGun].shotSound.clip);
+            //allGuns[_selectedGun].shotSound.Play();
+            // Trigger muzzle flash
+            photonView.RPC("ShowMuzzleFlashRPC", RpcTarget.All);
+        }
+    }
+
 
     private void Shoot()
     {
@@ -506,8 +537,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
         _shotCounter = allGuns[_selectedGun].timeBetweenShots;
 
         allGuns[_selectedGun].ReduceCurrentAmmo();
-        allGuns[_selectedGun].shotSound.Stop();
-        allGuns[_selectedGun].shotSound.Play();
+        //allGuns[_selectedGun].shotSound.Stop();
+        // allGuns[_selectedGun].shotSound.Play();
+        photonView.RPC("ShootAndPlaySound", RpcTarget.All, photonView.Owner.ActorNumber);
         UpdateUI();
     }
 
@@ -533,6 +565,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private void ReloadWeapon()
     {
         isReloading = true;
+        if (_selectedGun == 0 )
+        {
+            animRifle.SetTrigger("reload");
+        } else if(_selectedGun == 1)
+        {
+            animHandgun.SetTrigger("reload");
+        }
+
         if (reloadCo != null) { StopCoroutine(reloadCo); }
         reloadCo = StartCoroutine(ReloadWeaponOverTime());
     }

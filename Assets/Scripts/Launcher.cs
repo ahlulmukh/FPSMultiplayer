@@ -52,6 +52,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        Application.targetFrameRate = 60;
         CloseMenus();
 
         loadingScreen.SetActive(true);

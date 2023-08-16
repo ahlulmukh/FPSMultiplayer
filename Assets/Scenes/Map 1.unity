@@ -11019,11 +11019,11 @@ PrefabInstance:
       objectReference: {fileID: 1650750065}
     - target: {fileID: 6450520487450753287, guid: daec1717e0fd90e49a9c3dee2d359794, type: 3}
       propertyPath: matchLenght
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6450520487450753287, guid: daec1717e0fd90e49a9c3dee2d359794, type: 3}
       propertyPath: waitAfterEnding
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
