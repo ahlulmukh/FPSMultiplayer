@@ -13,6 +13,8 @@ public class UIController : MonoBehaviour
 
     public TextMeshProUGUI ammoText;
 
+    public TextMeshProUGUI killMessageText;
+
     public GameObject deathScreen;
     public TMP_Text deathText;
     public FixedJoystick joystick;

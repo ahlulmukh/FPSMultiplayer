@@ -109,6 +109,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private FixedJoystick joystick;
     private Image damageScreen;
 
+    public float displayDuration = 3.0f;
+    private float displayTimer = 0.0f;
 
     private AudioSource gunshotAudioSource; // tambahkan variabel ini
     public float maxSoundDistance = 10.0f;
@@ -116,9 +118,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void Start()
     {
+
         joystick = UIController.instance.joystick;
         damageScreen = UIController.instance.damageScreen;
         damageScreen.gameObject.SetActive(false);
+
+
         gunshotAudioSource = gameObject.AddComponent<AudioSource>();
         gunshotAudioSource.spatialBlend = 1.0f;
 
@@ -140,10 +145,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
             ammoText = UIController.instance.ammoText;
             _shotCounter = 0f;
             allGuns[_selectedGun].currentAmmo = allGuns[_selectedGun].ammo;
-
             UIController.instance.healthSlider.maxValue = maxHealth;
             UIController.instance.healthSlider.value = _currentHealth;
-
             UpdateUI();
         }
         else{
@@ -188,7 +191,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
     void Update()
     {
 
-        if(photonView.IsMine)
+
+
+        if (displayTimer > 0)
+        {
+            displayTimer -= Time.deltaTime;
+
+            if (displayTimer <= 0)
+            {
+                // Menonaktifkan elemen UI setelah durasi selesai
+                gameObject.SetActive(false);
+            }
+        }
+
+        if (photonView.IsMine)
         {
 
             if (SimpleInput.GetButtonDown("Shoot"))
@@ -487,8 +503,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
             photonView.RPC("ShowMuzzleFlashRPC", RpcTarget.All);
         }
     }
-
-
+    
+    
     private void Shoot()
     {
 
@@ -607,8 +623,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
         ammoText.text = allGuns[_selectedGun].currentAmmo.ToString() + " / " + allGuns[_selectedGun].ammo.ToString();
     }
 
-    
 
+
+    
     [PunRPC]
     public void DealDamage(string damager, int damageAmount, int actor)
     {

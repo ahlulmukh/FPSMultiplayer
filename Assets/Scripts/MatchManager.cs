@@ -408,9 +408,11 @@ public class MatchManager : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             PhotonNetwork.DestroyAll();
         }
-
+        
+        
+        //ShowLeaderboard();
         UIController.instance.endScreen.SetActive(true);
-        ShowLeaderboard();
+       
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
